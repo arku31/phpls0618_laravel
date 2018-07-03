@@ -65,6 +65,10 @@
         </style>
     </head>
     <body>
+    {{--{!! Form::open(['url' => 'foo/bar']) !!}--}}
+    {{--{!! Form::token() !!}--}}
+    {{--{!! Form::text('email', 'example@gmail.com') !!}--}}
+    {{--{!! Form::close() !!}--}}
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

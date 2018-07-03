@@ -12,6 +12,10 @@
 */
 
 Route::get('/', function () {
+//    Mail::to(\App\User::find(1))->send(new \App\Mail\TestMail());
+
+    $data = [];
+    Mail::to(\App\User::find(1))->send(new \App\Mail\newPostPosted($data));
     return view('welcome');
 });
 
@@ -29,5 +33,7 @@ Route::group(['prefix' => 'posts', 'middleware' => ['auth', 'adminOnly']], funct
     Route::post('/update/{post_id}', 'PostController@update')->name('userposts.update');
 
 });
+
+
 
 

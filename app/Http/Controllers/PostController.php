@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\ImageHandler;
+use App\Events\PostPostedEvent;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +14,9 @@ class PostController extends Controller
     {
         $posts = Post::with('user')->get();
         $data['posts'] = $posts;
+        event(new PostPostedEvent());
+        $imageRotator = new ImageHandler();
+        $imageRotator->rotate();
         return view('posts.index', $data);
     }
 
